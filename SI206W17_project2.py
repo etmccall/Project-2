@@ -103,14 +103,15 @@ for er in people:
 	for grade in titl:
 		col = grade.find(class_="field-item even").text
 		col = col.encode('utf-8')
+		col=str(col,encoding='utf-8')
 		li.append(col)
 
 lii=[]
 title =sou.find_all(property="dc:title")
 
 for whattup in title: 
-	zaza = whattup.find('h2').text
-	zaza=zaza.encode('utf-8')
+	zaza = whattup.find('h2').text.encode('utf-8')
+	zaza=str(zaza,encoding='utf-8')
 	lii.append(zaza)
 	
 	
@@ -149,7 +150,7 @@ def get_five_tweets(m):
 		python_obj_data = CACHE_DICTION[z] 
 	else: 
 		gm=[]
-		results = api.search(q=z)
+		results = api.search(q=m)
 		list_of_arnold = results["statuses"]
 		python_obj_data = list_of_arnold[:5]  
 		for tweet in python_obj_data:
